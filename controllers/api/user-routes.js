@@ -52,11 +52,34 @@ router.post('/', (req, res) => {
       });
   });
 
+  //login route using POST which carries request paramter in req.body which is more secure for data transfer
+  router.post('/login', (req, res) => {
+    User.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(dbUserData => {
+      if (!dbUserData) {
+        res.status(400).json({ message: 'No user with that email address!' });
+        return;
+      }
+  
+      const validPassword = dbUserData.checkPassword(req.body.password);
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+  
+      res.json({ user: dbUserData, message: 'You are now logged in!' });
+    });
+  });
+
 //PUT api/users/id
 router.put('/:id', (req, res) => {
     //combines creating data and looking up data
     //req.body provides new data, req.parrams.id tells where
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
