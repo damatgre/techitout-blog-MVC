@@ -1,3 +1,5 @@
+//user routes
+
 const router = require('express').Router();
 const { User } = require('../../models');
 
@@ -49,7 +51,7 @@ router.post('/', (req, res) => {
         res.status(500).json(err);
       });
   });
-  
+
 //PUT api/users/id
 router.put('/:id', (req, res) => {
     //combines creating data and looking up data
