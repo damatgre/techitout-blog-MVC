@@ -5,16 +5,13 @@ const sequelize = require('./config/connection');
 //establish relative path to other directories
 const path = require('path');
 //assign templating engine
+const app = express();
+const PORT = process.env.PORT || 3001;
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 //set up sessions
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-
 
 const sess = {
   secret: 'Super secret secret',
@@ -27,7 +24,7 @@ const sess = {
 };
 
 app.use(session(sess));
-
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
