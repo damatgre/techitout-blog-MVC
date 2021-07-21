@@ -76,7 +76,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create posts to site, using req.body to populate columns in post table
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Post.create({
         title: req.body.title,
         content: req.body.content,
@@ -90,7 +90,7 @@ router.post('/', (req, res) => {
 });
 
 //update post title
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update(
         {
             title: req.body.title,
