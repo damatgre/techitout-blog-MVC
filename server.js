@@ -5,19 +5,19 @@ const sequelize = require('./config/connection');
 //establish relative path to other directories
 const path = require('path');
 //assign templating engine
-const app = express();
-const PORT = process.env.PORT || 3001;
-
 const helpers = require('./utils/helpers')
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({ helpers });
-//set up sessions
 const session = require('express-session');
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+//set up sessions
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: { maxAge: 30000 },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
