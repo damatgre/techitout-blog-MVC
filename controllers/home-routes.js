@@ -33,6 +33,7 @@ router.get('/', (req, res) => {
     });
 });
 
+//check to see if logged in with session
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
@@ -41,9 +42,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//signup route
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
+
 
 router.get('/post/:id', (req, res) => {
   Post.findOne({
