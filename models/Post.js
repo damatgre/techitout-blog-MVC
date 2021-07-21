@@ -18,6 +18,7 @@ Post.init(
         allowNull: false
       },
       content: {
+        //use text because it is unlimited, unlike STRING
         type: DataTypes.TEXT,
         allowNull: false
       },
