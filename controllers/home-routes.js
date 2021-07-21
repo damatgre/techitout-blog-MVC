@@ -1,6 +1,8 @@
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const router = require('express').Router();
+
+//get all posts
 router.get('/', (req, res) => {
   Post.findAll({
     attributes: [
@@ -9,18 +11,19 @@ router.get('/', (req, res) => {
       'content',
       'created_at'
     ],
-    include: [{
-      model: Comment,
-      attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-      include: {
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
         model: User,
         attributes: ['username']
       }
-    },
-    {
-      model: User,
-      attributes: ['username']
-    }
     ]
   })
     .then(dbPostData => {
@@ -42,10 +45,12 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//sign up
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+//get post by id
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -86,6 +91,7 @@ router.get('/post/:id', (req, res) => {
     });
 });
 
+//find comment for post
 router.get('/posts-comments', (req, res) => {
   Post.findOne({
     where: {
