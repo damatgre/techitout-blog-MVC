@@ -47,7 +47,7 @@ router.get('/login', (req, res) => {
 
 //sign up
 router.get('/signup', (req, res) => {
-  res.render('signup');
+  res.render('dashboard');
 });
 
 //get post by id
