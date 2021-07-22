@@ -1,7 +1,6 @@
 // Import the Sequelize constructor from the library
 const Sequelize = require('sequelize');
 
-//herllo
 require('dotenv').config();
 
 // Create connection to our database, pass in your MySQL information for username and password
