@@ -2,15 +2,15 @@
   <!--for each comment-->
   {{#each this}}
     <div class="card">
-        <h3 class="card-header"></h3>
+        <h3 class="card-header">-{{user.username}}, {{format_date created_at}}</h3>
         <section class="comment card-body">
+            {{!-- <div class="meta">
+              <!--provide data on user and when created--> 
+                
+            </div> --}}
             <div class="text">
               <!--import text of comment-->
                 {{comment_text}}
-            </div>
-            <div class="meta">
-              <!--provide data on user and when created--> 
-                -{{user.username}}, {{format_date created_at}}
             </div>
         </section>
     </div>
