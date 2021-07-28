@@ -4,12 +4,12 @@
 
 This project is a node.js application that users can take advantage of in order to write quality README files. This project uses inquirer to populate input from the user,and create a new README.
 
-  ## Table of Contents
-  - [Description](#description)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Contributing](#contributing)
-
+ ## Table of Contents
+ - [Description](#description)
+ - [Installation](#installation)
+ - [Usage](#usage)
+ - [Contributing](#contributing)
+ - [Contributing](#contributing)
 
 ## Installation
 
@@ -33,6 +33,12 @@ Visit: http://localhost:3001/
 
 Live Deployment: [View Application](https://tranquil-scrubland-09008.herokuapp.com/)
 
+## Contributing 
+
+During the creation of this application, the following resources were consulted:
+
+*[Handlebars Tutorial](https://www.youtube.com/watch?v=1srD3Mdvf50&t=1s)
+*[priaravi23's GitHub](https://github.com/priyaravi23/mvc-tech-blog)
 
 ## Technology Used
 
