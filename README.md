@@ -33,6 +33,11 @@ Visit: http://localhost:3001/
 
 Live Deployment: [View Application](https://tranquil-scrubland-09008.herokuapp.com/)
 
+## Screenshot and Video
+
+![screenshot of the blog](./assets/techitoutblog.png)
+
+
 ## Contributing 
 
 During the creation of this application, the following resources were consulted:
