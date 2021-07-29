@@ -12,6 +12,7 @@ router.get('/', withAuth, (req, res) => {
             attributes: [
                 'id',
                 'title',
+                'link',
                 'content',
                 'created_at'
             ],
@@ -30,7 +31,10 @@ router.get('/', withAuth, (req, res) => {
             ]
         })
         .then(dbPostData => {
+
             const posts = dbPostData.map(post => post.get({ plain: true }));
+
+            console.log(Post);
             res.render('dashboard', { posts, loggedIn: true });
         })
         .catch(err => {
@@ -48,6 +52,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             attributes: [
                 'id',
                 'title',
+                'link',
                 'content',
                 'created_at'
             ],
@@ -67,6 +72,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             ]
         })
         .then(dbPostData => {
+            //  link = previewData
             if (!dbPostData) {
                 res.status(404).json({ message: 'No post found with this id' });
                 return;
